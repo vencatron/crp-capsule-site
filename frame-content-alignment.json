@@ -1,0 +1,149 @@
+{
+  "meta": {
+    "source_video": "crp-fund-pitch.mp4",
+    "total_frames": 6,
+    "frames_per_section": 121,
+    "description": "Mapping between scroll animation frames and video narrative content"
+  },
+  "sections": [
+    {
+      "id": 1,
+      "frame_directory": "frame-1",
+      "frame_range": "frame_0001.webp - frame_0121.webp",
+      "visual_mood": "Discovery & Overwhelm",
+      "visual_description": "Two silhouetted figures standing before a massive wall of floating documents, papers, and images. Contemplative, overwhelming sense of information.",
+      "theme": "The Financial Puzzle",
+      "headline": "Where Do You Put Your Money?",
+      "subheadline": "The financial landscape today is a real puzzle.",
+      "narrative_excerpts": [
+        "For a lot of successful people and savvy investors, the financial landscape today is a real puzzle.",
+        "Where do you put your money? Gold, silver, even bitcoin, all sitting at crazy all-time highs.",
+        "The housing market—we're seeing housing shortages like never before.",
+        "Every door you'd normally walk through is either slammed shut or has a ridiculously high price of admission."
+      ],
+      "key_points": [
+        "Markets at all-time highs",
+        "Housing shortages unprecedented",
+        "High-income professionals hit hardest",
+        "30-40% gone to taxes off the top"
+      ],
+      "emotional_arc": "confusion → recognition → frustration"
+    },
+    {
+      "id": 2,
+      "frame_directory": "frame-2",
+      "frame_range": "frame_0001.webp - frame_0121.webp",
+      "visual_mood": "Exclusion & Barrier",
+      "visual_description": "Figure standing before locked gates or closed doorways, with wealthy symbols visible beyond. Sense of being shut out from opportunity.",
+      "theme": "The Wealth Gap Secret",
+      "headline": "Locked Out of the System",
+      "subheadline": "The wealthy have tools you've never been shown.",
+      "narrative_excerpts": [
+        "You're often locked out or shut away from the doorways to knowledge.",
+        "Programs and loopholes that wealthy people use to build more wealth.",
+        "Tools like bonus depreciation exist—but nobody tells the average person about them.",
+        "The wealthy aren't smarter. They just have access to different doors."
+      ],
+      "key_points": [
+        "Wealth-building knowledge is gatekept",
+        "Tax loopholes favor those who know them",
+        "Bonus depreciation: a tool of the wealthy",
+        "Access to information is the real barrier"
+      ],
+      "emotional_arc": "exclusion → awareness → determination"
+    },
+    {
+      "id": 3,
+      "frame_directory": "frame-3",
+      "frame_range": "frame_0001.webp - frame_0121.webp",
+      "visual_mood": "Dreams & Possibilities",
+      "visual_description": "Single figure reaching toward glowing orbs containing scenes of life and community. Warm, aspirational, hopeful.",
+      "theme": "The Light Bulb Moment",
+      "headline": "What If You Could Flip It?",
+      "subheadline": "Turn your biggest expense into your greatest asset.",
+      "narrative_excerpts": [
+        "What if you could take one of those huge challenges and flip it on its head?",
+        "This is the light bulb moment. This is the whole game.",
+        "Instead of writing that check to the IRS and waving goodbye to that cash forever, imagine redirecting it.",
+        "The magic ingredient is called bonus depreciation."
+      ],
+      "key_points": [
+        "Redirect tax money into real assets",
+        "Bonus depreciation enables massive year-one deductions",
+        "$100K investment = potential $100K write-off",
+        "Money grows FOR you instead of disappearing"
+      ],
+      "emotional_arc": "curiosity → revelation → excitement"
+    },
+    {
+      "id": 4,
+      "frame_directory": "frame-4",
+      "frame_range": "frame_0001.webp - frame_0121.webp",
+      "visual_mood": "Journey & Navigation",
+      "visual_description": "Figure walking on stormy shoreline with floating connected screens/images in the sky. Determined journey through uncertainty toward vision.",
+      "theme": "The Roadmap",
+      "headline": "How It All Comes Together",
+      "subheadline": "Every piece of the puzzle fits together.",
+      "narrative_excerpts": [
+        "How does this all come together in the real world? Let's pull back the curtain.",
+        "This diagram is basically our roadmap—how every single piece of the puzzle fits together.",
+        "Partners pool money together and form a limited liability company.",
+        "The LLC buys property with cash. In a market like this, that gives you a massive leg up."
+      ],
+      "key_points": [
+        "LLC structure protects personal assets",
+        "Cash purchases = competitive advantage",
+        "Democratic decision-making by ownership share",
+        "From formation to protection to returns"
+      ],
+      "emotional_arc": "understanding → clarity → confidence"
+    },
+    {
+      "id": 5,
+      "frame_directory": "frame-5",
+      "frame_range": "frame_0001.webp - frame_0121.webp",
+      "visual_mood": "Building & Collaboration",
+      "visual_description": "Two people working side by side at computers in a cozy forest/nature setting with candles. Warm, collaborative, technology meets nature.",
+      "theme": "Smart Operations",
+      "headline": "Hands-On & AI-Powered",
+      "subheadline": "Real oversight. Smart efficiency.",
+      "narrative_excerpts": [
+        "This whole model is super hands-on. By focusing on local properties, partners can actually manage them directly.",
+        "No faceless management company—you have real oversight.",
+        "They're using AI to crunch the numbers to make sure everything adds up.",
+        "Multi-layered safety net: LLC protection, hazard insurance, D&O insurance, home warranty."
+      ],
+      "key_points": [
+        "Local properties = direct management",
+        "Dedicated handyman for quick fixes",
+        "AI-powered financial analysis",
+        "Four layers of risk protection"
+      ],
+      "emotional_arc": "engagement → competence → security"
+    },
+    {
+      "id": 6,
+      "frame_directory": "frame-6",
+      "frame_range": "frame_0001.webp - frame_0121.webp",
+      "visual_mood": "Fulfillment & Legacy",
+      "visual_description": "Elderly woman reading a book peacefully by a sunny window with flowers. Warm golden light, contentment, arrived at destination.",
+      "theme": "Generational Wealth",
+      "headline": "Build a Lasting Legacy",
+      "subheadline": "Not a quick flip—a dependable income engine.",
+      "narrative_excerpts": [
+        "Think of it like buying an oil well. You're not buying it to sell next year.",
+        "You're buying it because it's going to produce barrels of oil, month after month, generating cash flow forever.",
+        "The goal isn't just profit—it's generational wealth.",
+        "What if your biggest liability could actually become your single greatest asset?"
+      ],
+      "key_points": [
+        "Year 1: Massive tax benefit",
+        "Following years: Rent covers costs + profit",
+        "Reinvest or distribute—partners decide",
+        "Oil well analogy: steady, reliable, long-term"
+      ],
+      "emotional_arc": "vision → peace → legacy"
+    }
+  ],
+  "full_transcript": "Today we're diving into a really interesting real estate strategy. Well, that's pretty much built for the financial world we live in right now. The big idea here is, what if you could take your single biggest expense? Yep, your taxes and turn it into a powerful asset that builds wealth. Let's get into how that actually works. So, before we get to the solution, we've got to set the stage. We need to understand the problem, because for a lot of successful people and savvy investors, the financial landscape today, well, it's a real puzzle. I mean, seriously, think about it. Where do you put your money? You've got things like gold, silver, even bitcoin, all sitting at these crazy all-time highs. And the housing market, we're seeing housing shortages like never before. It kind of feels like every door you'd normally walk through is either a slam shot or has a ridiculously high price of admission. And if you're a high-income professional, you're getting it especially hard. First off, there's the massive tax burden, right? You're looking at 30, maybe 40% or more gone right off the top when you add up federal and state. And at the same time, real estate, which has always been a go-to for wealth building, feels almost impossible to get into. It's really the perfect storm of financial roadblocks. Okay, but what if you could take one of those huge challenges and flip it on its head? What if you could turn it into a massive opportunity? This is where things get really interesting, because this model introduces a totally new way of looking at your portfolio, and it all starts with the money you were about to send to the government. This right here, this is the light bulb moment. This is the whole game. Instead of just writing that check to the IRS and waving a buy to that cash forever, imagine redirecting it, imagine putting it to work in a real tangible asset that actually makes you money. I know it sounds a little too good to be true, but there's a specific tax incentive that makes this whole thing possible. And that magic ingredient is called bonus depreciation. So here's the simple version. It lets the partnership take a huge tax deduction in the very first year you own a property. Let's say the group invests $100,000. With bonus depreciation, you could potentially write off that entire amount from your taxable income in year one. You see what that means? The money you would have paid in taxes is now invested in growing for you. So the big question is, how does this all come together in the real world? Let's pull back the curtain and look at the actual nuts and bolts of this partnership. The structure, how the money moves, and how it's managed day to day. All right, this diagram you're seeing now, this is basically our roadmap. It shows you how every single piece of the puzzle fits together. We're talking about everything from how the partnership is formed, to how your investment is protected, all the way to how it generates returns. So let's zoom in and take a closer look at each part. First things first, how is this thing built? It all starts with the partners pulling their money together. Then they form a limited liability company, an LLC. This is huge because the LLC is what actually owns the property, and it creates a legal shield that protects everyone's personal assets. Now here's a key advantage. The LLC buys property with cash. In a market like this, that gives you a massive leg up. And best of all, everything is democratic. Decisions are based on your ownership share. Now, what about running the thing? Well, this whole model is super hands-on. By focusing on local properties, the partners can actually manage them directly. No faceless management company, you have real oversight. If something breaks, there's a dedicated handyman ready to go for quick fixes. And even before a property is bought, they're using AI to crunch the numbers to make sure everything from rental income to taxes adds up. It's smart and it's efficient. Okay, the structure makes sense. But now for the two questions, every investor really cares about. How safe is my money? And how does it actually grow? This model has a pretty clear answer for both. We're talking about a multi-layered safety net here. So layer one is the LLC itself. That's your personal liability protection. Then you've got standard hazard insurance for any physical damage, you know, fire, storms, that kind of thing. Layer three is D&O insurance that protects the partners who are making the big decisions. And finally, you've even got a home warranty for things like the furnace or the fridge. It's a really thorough way to wall off the risk. So what about the returns? Here's the timeline. Year one is huge. That's when you get that massive tax benefit from the bonus depreciation. Then in the following years, the rent starts rolling in, covers all the costs and starts generating real profit. From that point on, the partners get to decide. Do we take that cash and put it in our pockets? Or do we roll it into the next property and let our investment compound? And that last point brings us to a really important distinction. This is not about flipping houses. It's not about making a quick book. This is a fundamental shift in mindset. We're talking about moving away from short-term thinking and toward building a real lasting financial legacy. The source material has this fantastic analogy for it. Think of it like buying an oil well. You're not buying it to sell the well next year. You're buying it because it's going to produce barrels of oil, month after month, generating cash flow forever. That's the goal here, to build a dependable income engine that just keeps running. So let's just put it side by side. The typical flipper is chasing a quick score. It's usually a high-risk short-term gamble. This partnership model is playing a totally different game. The goal isn't just profit. It's generational wealth. And the strategy isn't a gamble. It's about building steady, reliable, long-term cash flow from a portfolio of solid assets. Which brings us right back to that powerful idea from the beginning. We started out talking about taxes being this huge drain, this major liability. But what this model really asks is, what if that's all wrong? What if, with the right strategy, your biggest liability could actually become your single greatest asset?"
+}

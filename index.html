@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRP Fund - Transform Taxes Into Wealth</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background-color: #0a0a0a;
+            color: #fff;
+        }
+
+        /* Fixed background frame */
+        .frame-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: 1;
+        }
+
+        .frame-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.1s ease;
+        }
+
+        /* Dark overlay for text readability */
+        .frame-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(
+                to right,
+                rgba(0, 0, 0, 0.7) 0%,
+                rgba(0, 0, 0, 0.3) 50%,
+                rgba(0, 0, 0, 0.1) 100%
+            );
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        /* Progress bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #f59e0b, #ef4444);
+            z-index: 100;
+            transition: width 0.1s ease;
+        }
+
+        /* Section indicator */
+        .section-indicator {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            z-index: 100;
+        }
+
+        .section-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .section-dot.active {
+            background: #f59e0b;
+            border-color: #f59e0b;
+            transform: scale(1.2);
+        }
+
+        /* Debug info */
+        .debug-info {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 12px;
+            z-index: 100;
+            color: #888;
+        }
+
+        /* Scrollable content */
+        .scroll-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Each section */
+        .section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 60px;
+            padding-left: 80px;
+        }
+
+        .section-inner {
+            max-width: 500px;
+        }
+
+        .section-number {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #f59e0b;
+            margin-bottom: 16px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .section.visible .section-number {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-headline {
+            font-size: 48px;
+            font-weight: bold;
+            line-height: 1.1;
+            margin-bottom: 16px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease 0.1s;
+        }
+
+        .section.visible .section-headline {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-subheadline {
+            font-size: 20px;
+            color: #ccc;
+            margin-bottom: 24px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease 0.2s;
+        }
+
+        .section.visible .section-subheadline {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-excerpt {
+            font-size: 18px;
+            line-height: 1.7;
+            color: #aaa;
+            font-style: italic;
+            border-left: 3px solid #f59e0b;
+            padding-left: 20px;
+            margin-bottom: 24px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease 0.3s;
+        }
+
+        .section.visible .section-excerpt {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .key-points {
+            list-style: none;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease 0.4s;
+        }
+
+        .section.visible .key-points {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .key-points li {
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+            color: #ddd;
+        }
+
+        .key-points li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            background: #f59e0b;
+            border-radius: 50%;
+        }
+
+        /* Spacer sections for more scroll room per frame sequence */
+        .spacer {
+            height: 100vh;
+        }
+
+        /* Loading screen */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0a0a0a;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading-screen.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loading-text {
+            font-size: 18px;
+            color: #666;
+            margin-top: 20px;
+        }
+
+        .loading-bar {
+            width: 200px;
+            height: 4px;
+            background: #333;
+            border-radius: 2px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .loading-fill {
+            height: 100%;
+            background: #f59e0b;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 40px 20px;
+            }
+
+            .section-headline {
+                font-size: 32px;
+            }
+
+            .section-subheadline {
+                font-size: 16px;
+            }
+
+            .section-excerpt {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-text">Loading frames...</div>
+        <div class="loading-bar">
+            <div class="loading-fill" id="loadingFill"></div>
+        </div>
+        <div class="loading-text" id="loadingCount">0 / 726</div>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Section Indicators -->
+    <div class="section-indicator" id="sectionIndicator">
+        <div class="section-dot" data-section="0"></div>
+        <div class="section-dot" data-section="1"></div>
+        <div class="section-dot" data-section="2"></div>
+        <div class="section-dot" data-section="3"></div>
+        <div class="section-dot" data-section="4"></div>
+        <div class="section-dot" data-section="5"></div>
+    </div>
+
+    <!-- Debug Info -->
+    <div class="debug-info" id="debugInfo">
+        Section: 1 | Frame: 1
+    </div>
+
+    <!-- Background Frame -->
+    <div class="frame-container">
+        <img id="frameImage" src="frame-1/frame_0001.webp" alt="Animation Frame">
+    </div>
+    <div class="frame-overlay"></div>
+
+    <!-- Scrollable Content -->
+    <div class="scroll-content">
+
+        <!-- Section 1: Facing The Overwhelm -->
+        <section class="section" data-section="0">
+            <div class="section-inner">
+                <div class="section-number">Section 01</div>
+                <h1 class="section-headline">Facing a Wall of Choices</h1>
+                <p class="section-subheadline">So many options. So much noise. Where do you even begin?</p>
+                <p class="section-excerpt">"For savvy investors, the financial landscape feels like standing before an endless wall of information—overwhelming and unclear."</p>
+                <ul class="key-points">
+                    <li>Markets, crypto, real estate—all at record highs</li>
+                    <li>Endless advice, endless contradictions</li>
+                    <li>The more you learn, the more complex it gets</li>
+                    <li>You're not alone in feeling stuck</li>
+                </ul>
+            </div>
+        </section>
+        <div class="spacer"></div>
+
+        <!-- Section 2: Locked Out -->
+        <section class="section" data-section="1">
+            <div class="section-inner">
+                <div class="section-number">Section 02</div>
+                <h1 class="section-headline">Locked Out of the System</h1>
+                <p class="section-subheadline">The wealthy have tools you've never been shown.</p>
+                <p class="section-excerpt">"You're often locked out or shut away from the doorways to knowledge—programs and loopholes that wealthy people use to build more wealth."</p>
+                <ul class="key-points">
+                    <li>Wealth-building knowledge is gatekept from ordinary people</li>
+                    <li>Tax loopholes favor those who know about them</li>
+                    <li>Tools like bonus depreciation exist—but nobody tells you</li>
+                    <li>The wealthy aren't smarter—they just have access to different doors</li>
+                </ul>
+            </div>
+        </section>
+        <div class="spacer"></div>
+
+        <!-- Section 3: Reaching For Dreams -->
+        <section class="section" data-section="2">
+            <div class="section-inner">
+                <div class="section-number">Section 03</div>
+                <h1 class="section-headline">Reach For What Matters</h1>
+                <p class="section-subheadline">When your money works for you, your dreams come within reach.</p>
+                <p class="section-excerpt">"This is the light bulb moment. Instead of watching your money disappear, imagine it flowing toward the life you actually want."</p>
+                <ul class="key-points">
+                    <li>Redirect taxes into tangible assets you can see and touch</li>
+                    <li>Watch your investment work toward your vision</li>
+                    <li>Each dollar becomes a step toward financial freedom</li>
+                    <li>Build toward the life you're reaching for</li>
+                </ul>
+            </div>
+        </section>
+        <div class="spacer"></div>
+
+        <!-- Section 4: The Journey Forward -->
+        <section class="section" data-section="3">
+            <div class="section-inner">
+                <div class="section-number">Section 04</div>
+                <h1 class="section-headline">Walking Through The Storm</h1>
+                <p class="section-subheadline">The path forward may be uncertain, but the destination is clear.</p>
+                <p class="section-excerpt">"Even when the landscape feels stormy, a clear structure lights the way—connecting every step to your vision."</p>
+                <ul class="key-points">
+                    <li>A protected structure guides your journey</li>
+                    <li>Each piece connects to the bigger picture</li>
+                    <li>Move forward with confidence, not confusion</li>
+                    <li>The horizon becomes clearer with every step</li>
+                </ul>
+            </div>
+        </section>
+        <div class="spacer"></div>
+
+        <!-- Section 5: Building Together -->
+        <section class="section" data-section="4">
+            <div class="section-inner">
+                <div class="section-number">Section 05</div>
+                <h1 class="section-headline">Building Side By Side</h1>
+                <p class="section-subheadline">Technology and human touch, working in harmony.</p>
+                <p class="section-excerpt">"Real partners, working together in a space that feels grounded—where smart tools meet genuine collaboration."</p>
+                <ul class="key-points">
+                    <li>People you trust, not faceless corporations</li>
+                    <li>Smart tools that amplify human judgment</li>
+                    <li>A warm, grounded approach to growth</li>
+                    <li>Collaboration that feels natural, not forced</li>
+                </ul>
+            </div>
+        </section>
+        <div class="spacer"></div>
+
+        <!-- Section 6: Peaceful Arrival -->
+        <section class="section" data-section="5">
+            <div class="section-inner">
+                <div class="section-number">Section 06</div>
+                <h1 class="section-headline">Arriving At Peace</h1>
+                <p class="section-subheadline">The quiet reward of a journey well-traveled.</p>
+                <p class="section-excerpt">"Imagine a life where the work is done—where you can sit in the warmth, surrounded by what matters, knowing you've built something that lasts."</p>
+                <ul class="key-points">
+                    <li>A future of calm, not chaos</li>
+                    <li>Time to enjoy what you've cultivated</li>
+                    <li>Wealth that sustains, not just accumulates</li>
+                    <li>The legacy you leave behind</li>
+                </ul>
+            </div>
+        </section>
+        <div class="spacer"></div>
+
+    </div>
+
+    <script>
+        // Configuration
+        const SECTIONS = 6;
+        const FRAMES_PER_SECTION = [121, 121, 121, 121, 121, 121]; // Frame counts per section
+        const TOTAL_FRAMES = FRAMES_PER_SECTION.reduce((a, b) => a + b, 0);
+
+        // DOM Elements
+        const frameImage = document.getElementById('frameImage');
+        const progressBar = document.getElementById('progressBar');
+        const debugInfo = document.getElementById('debugInfo');
+        const loadingScreen = document.getElementById('loadingScreen');
+        const loadingFill = document.getElementById('loadingFill');
+        const loadingCount = document.getElementById('loadingCount');
+        const sectionDots = document.querySelectorAll('.section-dot');
+        const sections = document.querySelectorAll('.section');
+
+        // Preload all frames
+        const allFrames = [];
+        let loadedCount = 0;
+
+        function preloadFrames() {
+            for (let section = 1; section <= SECTIONS; section++) {
+                const sectionFrames = [];
+                const frameCount = FRAMES_PER_SECTION[section - 1];
+                for (let frame = 1; frame <= frameCount; frame++) {
+                    const img = new Image();
+                    const filename = `frame-${section}/frame_${String(frame).padStart(4, '0')}.webp`;
+                    img.onload = () => {
+                        loadedCount++;
+                        const percent = (loadedCount / TOTAL_FRAMES) * 100;
+                        loadingFill.style.width = percent + '%';
+                        loadingCount.textContent = `${loadedCount} / ${TOTAL_FRAMES}`;
+
+                        if (loadedCount >= TOTAL_FRAMES) {
+                            setTimeout(() => {
+                                loadingScreen.classList.add('hidden');
+                            }, 500);
+                        }
+                    };
+                    img.onerror = () => {
+                        loadedCount++;
+                        console.warn(`Failed to load: ${filename}`);
+                    };
+                    img.src = filename;
+                    sectionFrames.push(img);
+                }
+                allFrames.push(sectionFrames);
+            }
+        }
+
+        // Get current scroll info
+        function getScrollInfo() {
+            const scrollTop = window.scrollY;
+            const maxScroll = document.body.scrollHeight - window.innerHeight;
+            const scrollFraction = Math.max(0, Math.min(1, scrollTop / maxScroll));
+
+            // Determine which section we're in (0-4)
+            const sectionFloat = scrollFraction * SECTIONS;
+            const currentSection = Math.min(SECTIONS - 1, Math.floor(sectionFloat));
+
+            // Progress within current section (0-1)
+            const sectionProgress = sectionFloat - currentSection;
+
+            // Frame index within section (0 to frameCount-1)
+            const frameCount = FRAMES_PER_SECTION[currentSection];
+            const frameIndex = Math.min(
+                frameCount - 1,
+                Math.floor(sectionProgress * frameCount)
+            );
+
+            return {
+                scrollFraction,
+                currentSection,
+                sectionProgress,
+                frameIndex
+            };
+        }
+
+        // Update frame display
+        function updateFrame() {
+            const { scrollFraction, currentSection, frameIndex } = getScrollInfo();
+
+            // Update frame image
+            if (allFrames[currentSection] && allFrames[currentSection][frameIndex]) {
+                const frame = allFrames[currentSection][frameIndex];
+                if (frame.complete && frame.naturalWidth > 0) {
+                    frameImage.src = frame.src;
+                }
+            }
+
+            // Update progress bar
+            progressBar.style.width = (scrollFraction * 100) + '%';
+
+            // Update section dots
+            sectionDots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSection);
+            });
+
+            // Update debug info
+            debugInfo.textContent = `Section: ${currentSection + 1} | Frame: ${frameIndex + 1}`;
+
+            // Update section visibility for animations
+            sections.forEach((section, index) => {
+                const rect = section.getBoundingClientRect();
+                const isVisible = rect.top < window.innerHeight * 0.7 && rect.bottom > 0;
+                section.classList.toggle('visible', isVisible);
+            });
+        }
+
+        // Throttled scroll handler
+        let ticking = false;
+        function onScroll() {
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    updateFrame();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }
+
+        // Initialize
+        window.addEventListener('scroll', onScroll);
+        window.addEventListener('resize', updateFrame);
+
+        preloadFrames();
+        updateFrame();
+    </script>
+</body>
+</html>
