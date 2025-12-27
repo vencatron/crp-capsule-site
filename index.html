@@ -215,6 +215,21 @@
             border-radius: 50%;
         }
 
+        .section-cta {
+            font-size: 22px;
+            font-weight: bold;
+            color: #f59e0b;
+            margin-top: 32px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease 0.5s;
+        }
+
+        .section.visible .section-cta {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         /* Spacer sections for more scroll room per frame sequence */
         .spacer {
             height: 100vh;
@@ -417,6 +432,7 @@
                     <li>Wealth that sustains, not just accumulates</li>
                     <li>The legacy you leave behind</li>
                 </ul>
+                <p class="section-cta">Catalyst Realty Partners (CRP) is your peace of mind.</p>
             </div>
         </section>
         <div class="spacer"></div>
