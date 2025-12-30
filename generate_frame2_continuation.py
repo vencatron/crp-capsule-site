@@ -18,7 +18,7 @@ from PIL import Image
 import io
 
 # Configuration
-API_KEY = "AIzaSyAnVDboJXeLmcEK-9Ao4pvBiqqPIKk-TNc"
+API_KEY = ""
 OUTPUT_DIR = Path("/Users/ronnie.duarte/Development/crp-capsule-site/frame-2")
 START_FRAME = 122
 NUM_FRAMES = 15  # Generate 15 new frames (122-136)
